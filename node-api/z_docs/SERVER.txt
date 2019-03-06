@@ -1,0 +1,3 @@
+//rodar servidor
+nodemon server
+npm start
