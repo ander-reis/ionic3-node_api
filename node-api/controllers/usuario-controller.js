@@ -24,13 +24,17 @@ usuarioController.prototype.post = async (req, res) => {
     _validationContract.isRequired(req.body.senhaConfirmacao, 'A senha de confirmação é obrigatória');
     _validationContract.isTrue(req.body.senha != req.body.senhaConfirmacao, 'A Senha e a Confirmação não são iguais');
 
-    let usuarioIsEmailExiste = await _repo.IsEmailExite(req.body.email);
-    if (usuarioIsEmailExiste) {
-        _validationContract.isTrue((usuarioIsEmailExiste.nome != undefined), `Já existe o e-mail ${req.body.email} cadastrado em nossa base.`);
+    if (req.body.email) {
+        let usuarioIsEmailExiste = await _repo.IsEmailExite(req.body.email);
+        if (usuarioIsEmailExiste) {
+            _validationContract.isTrue((usuarioIsEmailExiste.nome != undefined), `Já existe o e-mail ${req.body.email} cadastrado em nossa base.`);
+        }
     }
 
-    //Criptografa a senha do usuário
-    req.body.senha = md5(req.body.senha);
+    if(req.body.senha){
+        //Criptografa a senha do usuário
+        req.body.senha = md5(req.body.senha);
+    }
 
     ctrlBase.post(_repo, _validationContract, req, res);
 };
@@ -42,6 +46,7 @@ usuarioController.prototype.put = async (req, res) => {
     _validationContract.isRequired(req.body.email, 'Informe seu e-mail');
     _validationContract.isEmail(req.body.email, 'O e-mail informado é inválido');
     _validationContract.isRequired(req.params.id, 'Informe o id do usuário que será editado');
+
 
     let usuarioIsEmailExiste = await _repo.IsEmailExite(req.body.email);
     if (usuarioIsEmailExiste) {
@@ -73,14 +78,14 @@ usuarioController.prototype.autenticar = async (req, res) => {
     _validationContract.isEmail(req.body.email, 'Email é inválido');
     _validationContract.isRequired(req.body.senha, 'Informe sua senha');
 
-    if(!_validationContract.isValid()){
+    if (!_validationContract.isValid()) {
         res.status(400).send({message: 'Não foi possível efetuar o login', validation: _validationContract.errors()});
         return;
     }
 
     let usuarioEncontrado = await _repo.authenticate(req.body.email, req.body.senha);
 
-    if(usuarioEncontrado){
+    if (usuarioEncontrado) {
         res.status(200).send({
             usuario: usuarioEncontrado,
             token: jwt.sign({user: usuarioEncontrado}, variables.Security.secretKey)

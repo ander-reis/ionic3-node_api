@@ -25,7 +25,12 @@ export class LoginPage {
         let result = await this.usuarioSrv.autenticate(this.form.email, this.form.senha);
         if(result.success){
             //enviar para a rota certa
+            UsuarioProvider.registerLogin(result.data);
+            this.navCtrl.setRoot('CategoriaPage');
         }
-        console.log(result);
+    }
+
+    cadastrar(): void{
+        this.navCtrl.setRoot('CadastroPage');
     }
 }

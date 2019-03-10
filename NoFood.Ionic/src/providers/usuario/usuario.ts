@@ -20,4 +20,21 @@ export class UsuarioProvider extends ProviderBase<UsuarioModel> {
             senha: senha
         });
     }
+
+    async register(usuario: UsuarioModel): Promise<HttpResultModel> {
+        return this.http.post(`${this.url}/register`, usuario);
+    }
+
+    static registerLogin(result: any) {
+        localStorage.setItem(ConfigHelper.storageKeys.token, result.token);
+        localStorage.setItem(ConfigHelper.storageKeys.user, JSON.stringify(result.usuario));
+    }
+
+    static get getTokenAccess(): string{
+        return localStorage.getItem(ConfigHelper.storageKeys.token);
+    }
+
+    static get isLogado(): boolean {
+        return (localStorage.getItem(ConfigHelper.storageKeys.token) != undefined);
+    }
 }
