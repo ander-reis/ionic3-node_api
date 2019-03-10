@@ -1,5 +1,0 @@
-express;
-nodemon;
-body-parser;
-mongoose;
-jwt;
