@@ -18,4 +18,8 @@ export class CategoriaPage {
     gerenciarCategoria(): void {
         this.navCtrl.push('AdmCategoriasPage');
     }
+
+    gerenciarProduto(): void {
+        this.navCtrl.push('AdmProdutosPage');
+    }
 }

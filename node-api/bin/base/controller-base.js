@@ -68,7 +68,7 @@ exports.delete = async (repository, req, res) => {
         let id = req.params.id;
         if (id) {
             let data = await repository.delete(id);
-            res.status(200).send({message: 'Registro exclupido com sucesso'});
+            res.status(200).send({message: 'Registro excluído com sucesso'});
         } else {
             res.status(400).send({message: 'Precisa do ID'});
         }

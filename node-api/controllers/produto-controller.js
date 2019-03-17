@@ -15,8 +15,9 @@ produtoController.prototype.post = async (req, res) => {
 
     _validationContract.isRequired(req.body.nome, 'Nome obrigatório');
     _validationContract.isRequired(req.body.descricao, 'Descrição obrigatório');
-    _validationContract.isRequired(req.body.foto, 'Foto obrigatório');
+    // _validationContract.isRequired(req.body.foto, 'Foto obrigatório');
     _validationContract.isRequired(req.body.preco, 'Preço obrigatório');
+    _validationContract.isRequired(req.body.categoriaId, 'Categoria id obrigatório');
 
     if(req.body.preco){
         _validationContract.isTrue(req.body.preco == 0, 'Preço deve ser maior que 0');
@@ -33,6 +34,7 @@ produtoController.prototype.put = async (req, res) => {
     _validationContract.isRequired(req.body.descricao, 'Descrição obrigatório');
     _validationContract.isRequired(req.body.foto, 'Foto obrigatório');
     _validationContract.isRequired(req.body.preco, 'Preço obrigatório');
+    _validationContract.isRequired(req.body.categoriaId, 'Categoria id obrigatório');
     _validationContract.isRequired(req.params.id, 'ID obrigatório');
 
     if(req.body.preco){

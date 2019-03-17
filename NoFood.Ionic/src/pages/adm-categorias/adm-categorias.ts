@@ -21,6 +21,7 @@ export class AdmCategoriasPage {
     }
 
     private async _loadData(): Promise<void> {
+        console.log(this.categoriaSrv.get());
         let categoriaResult = await this.categoriaSrv.get();
         if (categoriaResult.success) {
             this.lista = <Array<CategoriaModel>>categoriaResult.data;

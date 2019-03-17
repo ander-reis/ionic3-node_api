@@ -14,7 +14,7 @@ categoriaController.prototype.post = async (req, res) => {
     let _validationContract = new validation();
 
     _validationContract.isRequired(req.body.titulo, 'Título obrigatório');
-    _validationContract.isRequired(req.body.foto, 'Foto obrigatório');
+    // _validationContract.isRequired(req.body.foto, 'Foto obrigatório');
 
     ctrlBase.post(_repo, _validationContract, req, res);
 };
