@@ -9,7 +9,7 @@
     </ion-navbar>
 </ion-header>
 <ion-content no-padding>
-    <ion-list lines>
+    <ion-list lines *ngIf="!isLoading">
         <ion-item text-wrap *ngIf="lista.length == 0">
             Você não tem nenhum produto cadastrado.
         </ion-item>

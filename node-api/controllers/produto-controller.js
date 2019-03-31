@@ -52,6 +52,24 @@ produtoController.prototype.getById = async (req, res) => {
     ctrlBase.getById(_repo, req, res);
 };
 
+produtoController.prototype.getByCategoriaId = async (req, res) => {
+    try{
+        let id = req.params.id;
+        if(id){
+            let data = await _repo.getByCategoriaId(req.params.id);
+            res.status(200).send(data);
+        } else {
+            res.status(400).send({
+                message: 'Informe o id da Categoria',
+                validation: {}
+            })
+        }
+    }catch (error) {
+        console.log('get com error, motivo', err);
+        res.status(500).send({message: 'Errro no processamento', error: err});
+    }
+};
+
 produtoController.prototype.delete = async (req, res) => {
     ctrlBase.delete(_repo, req, res);
 };
