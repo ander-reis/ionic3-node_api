@@ -8,7 +8,7 @@ class usuarioRepository {
 
     constructor() {
         this._base = new base('Usuario');
-        this._projection = 'nome email _id';
+        this._projection = 'nome email telefone _id';
     }
 
     async IsEmailExite(Email) {
@@ -30,7 +30,8 @@ class usuarioRepository {
             {
                 nome: data.nome,
                 email: data.email,
-                foto: data.foto
+                foto: data.foto,
+                telefone: data.telefone
             });
         return this._base._model.findById(usuarioAtualizado._id, this._projection);
     }
@@ -40,7 +41,7 @@ class usuarioRepository {
     }
 
     async getById(id) {
-        return await this._base._model.findById(id, 'nome email _id foto');
+        return await this._base._model.findById(id, 'nome email telefone _id foto');
     }
 
     async delete(id) {

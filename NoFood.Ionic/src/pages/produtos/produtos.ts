@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
 import {CategoriaModel} from "../../app/models/categoriaModel";
 import {ProdutoModel} from "../../app/models/produtoModel";
 import {ConfigHelper} from "../../app/helpers/configHelper";
@@ -18,7 +18,8 @@ export class ProdutosPage {
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
-        private produtoSrv: ProdutoProvider
+        private produtoSrv: ProdutoProvider,
+        public modalCtrl: ModalController
     ) {
     }
 
@@ -40,6 +41,11 @@ export class ProdutosPage {
 
     quantidadeAlterada(produto: ProdutoModel, event:number):void{
         console.log(produto, event);
+    }
+
+    visualizarProduto(item: ProdutoModel){
+        let modal = this.modalCtrl.create('VisualizarProdutoPage',{ prod: item});
+        modal.present();
     }
 
 }
