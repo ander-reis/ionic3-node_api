@@ -6,5 +6,9 @@ export class ConfigHelper {
         token: 'nofood.token',
         user: 'nofood.user',
         selectCategory: 'nofood.select.category'
-    }
+    };
+
+    public static Events = {
+        atualizaoQuantidadeProduto: 'atualizacao.quantidade.produto'
+    };
 }

@@ -19,27 +19,32 @@ ion-content.backImage {
   background: url(../assets/imagens/fundo.jpg);
   background-size: cover;
 }
+
 .backImage .scroll-content {
   background: rgba(189, 8, 28, 0.6);
 }
 
-.backImage input{
+.backImage input {
   color: #ffffff;
 }
-.backImage input:focus{
+
+.backImage input:focus {
   border-bottom: 1px solid #ffffff;
 }
-.backImage .item-inner{
+
+.backImage .item-inner {
   border-bottom: none !important;
   box-shadow: none !important;
 }
-.backImage .item-md{
+
+.backImage .item-md {
   box-shadow: none !important;
 }
 
 .list-transparent .item {
   background: transparent !important;
 }
+
 .list.list-transparent .item-input:last-child {
   border-bottom: none !important;
 }
@@ -49,6 +54,7 @@ ion-content.backImage {
   text-align: center;
   margin-top: 20%;
 }
+
 .logo span {
   color: white;
   font-size: 1.8rem;
@@ -56,6 +62,54 @@ ion-content.backImage {
   display: block;
   font-weight: bold;
 }
+
 .logo img {
   width: 120px;
+}
+
+.produtos {
+  margin-top: 60px;
+}
+
+.produtos .produto {
+  width: 80%;
+  background: white;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  border: 1px solid #E2DDDD;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  overflow: auto;
+}
+
+.produtos .produto .titulo {
+  color: red;
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.produtos .produto .descricao {
+  height: 50px;
+}
+
+.produtos .imagem {
+  float: left;
+  border: 1px solid #E2DDDD;
+  width: 79px;
+  height: 100px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.produtos .produto .preco span {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.produtos .produto .preco {
+  font-size: 2rem;
 }

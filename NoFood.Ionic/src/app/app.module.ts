@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {CategoriaProvider} from '../providers/categoria/categoria';
 import {CameraProvider} from '../providers/camera/camera';
 import {ProdutoProvider} from '../providers/produto/produto';
+import { CarrinhoProvider } from '../providers/carrinho/carrinho';
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import {ProdutoProvider} from '../providers/produto/produto';
         CameraProvider,
         Camera,
         ProdutoProvider,
+    CarrinhoProvider,
     ]
 })
 export class AppModule {

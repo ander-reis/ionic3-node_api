@@ -1,27 +1,59 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {CarrinhoProvider} from "../../providers/carrinho/carrinho";
+import {ProdutoModel} from "../../app/models/produtoModel";
+import {AcaoCarrinhoEnum} from "../../app/enums/AcaoCarrinhoEnum";
+import {Events} from "ionic-angular";
+import {ConfigHelper} from "../../app/helpers/configHelper";
 
 @Component({
     selector: 'quantidade',
     templateUrl: 'quantidade.html'
 })
-export class QuantidadeComponent {
+export class QuantidadeComponent implements OnInit{
 
-    numero: number = 1;
+    numero: number = 0;
+
+    @Input('produto') produto: ProdutoModel;
 
     @Output() quantidadeAlterada = new EventEmitter();
 
-    constructor() {
+    constructor(
+        private carrinhoSrv: CarrinhoProvider,
+        private evt: Events) {
+
+    }
+
+    ngOnInit(): void {
+        this._atualizarQuantidade();
+        this._registerEvent();
+    }
+
+    private _registerEvent(): void {
+        this.evt.subscribe(ConfigHelper.Events.atualizaoQuantidadeProduto, () => {
+            console.log('Evento chamdo', this.produto.nome);
+            this._atualizarQuantidade();
+        });
+    }
+
+    private _atualizarQuantidade(): void {
+        this.numero = this.carrinhoSrv.getQuantidadeItem(this.produto);
     }
 
     adicionar() {
         this.numero += 1;
-        this.quantidadeAlterada.emit(this.numero);
+        this.quantidadeAlterada.emit({
+            quantidade: this.numero,
+            acao: AcaoCarrinhoEnum.Adicionar
+        });
     }
 
     remover() {
         let _valorFinal = this.numero -= 1;
         if (_valorFinal <= 0)
-            this.numero = 1;
-        this.quantidadeAlterada.emit(this.numero);
+            this.numero = 0;
+        this.quantidadeAlterada.emit({
+            quantidade: this.numero,
+            acao: AcaoCarrinhoEnum.Remover
+        });
     }
 }

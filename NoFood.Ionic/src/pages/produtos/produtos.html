@@ -2,19 +2,21 @@
     <div class="topo"></div>
     <div class="titulo">
         <p>{{categoriaSelecionada.titulo}}</p>
-        <div class="cart">
+        <div class="cart" tappable (click)="visualizarCarrinho()">
             <ion-icon name="cart"></ion-icon>
-            <span>0 Itens</span>
+            <span>{{ carrinho.itens.length }} Itens</span>
         </div>
     </div>
     <div class="produtos">
-        <div class="produto" *ngFor="let item of produtos | orderBy:'nome'" (click)="visualizarProduto(item)" tappable>
-            <div class="imagem" [ngStyle]="{'background-image': 'url(' + item.foto + ')'}"></div>
-            <div class="titulo">{{item.nome}}</div>
-            <div class="descricao">{{item.descricao}}</div>
-            <div class="preco">{{item.preco | real}}</div>
+        <div class="produto" *ngFor="let item of produtos | orderBy:'nome'">
+            <div (click)="visualizarProduto(item)" tappable>
+                <div class="imagem" [ngStyle]="{'background-image': 'url(' + item.foto + ')'}"></div>
+                <div class="titulo">{{item.nome}}</div>
+                <div class="descricao">{{item.descricao}}</div>
+                <div class="preco">{{item.preco | real}}</div>
+            </div>
             <div class="quantidade">
-                <quantidade (quantidadeAlterada)="quantidadeAlterada(item, $event)"></quantidade>
+                <quantidade [produto]="item" (quantidadeAlterada)="quantidadeAlterada(item, $event)"></quantidade>
             </div>
         </div>
     </div>
