@@ -16,7 +16,6 @@ export class MeusPedidosPage {
         public navCtrl: NavController,
         public navParams: NavParams,
         private carrinhoSrv: CarrinhoProvider) {
-
     }
 
     ionViewDidLoad() {
