@@ -4,6 +4,7 @@ import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
 import {Camera} from "@ionic-native/camera/ngx";
+// import {OneSignalOriginal} from "@ionic-native/onesignal";
 
 import {MyApp} from './app.component';
 import {SpinnerProvider} from '../providers/spinner/spinner';
@@ -15,7 +16,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {CategoriaProvider} from '../providers/categoria/categoria';
 import {CameraProvider} from '../providers/camera/camera';
 import {ProdutoProvider} from '../providers/produto/produto';
-import { CarrinhoProvider } from '../providers/carrinho/carrinho';
+import {CarrinhoProvider} from '../providers/carrinho/carrinho';
+import {OneSignalOriginal} from "@ionic-native/onesignal";
 
 @NgModule({
     declarations: [
@@ -42,8 +44,9 @@ import { CarrinhoProvider } from '../providers/carrinho/carrinho';
         CategoriaProvider,
         CameraProvider,
         Camera,
+        // OneSignalOriginal,
         ProdutoProvider,
-    CarrinhoProvider,
+        CarrinhoProvider,
     ]
 })
 export class AppModule {
