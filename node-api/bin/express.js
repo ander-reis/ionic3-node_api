@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const variables = require('../bin/configuration/variables');
@@ -10,6 +11,8 @@ const pedidoRouter = require('../routes/pedido-router');
 
 //criando api server
 const app = express();
+
+app.use(cors());
 
 //configuração do parse JSON
 app.use(bodyParser.json({limit: '10mb'}));
