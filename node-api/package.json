@@ -4,7 +4,7 @@
   "description": "Api feita em nodeJs para utilização do nosso app NoFood",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "./node_modules/mocha/bin/mocha --timeout 10000"
   },
   "author": "Anderson Reis",
