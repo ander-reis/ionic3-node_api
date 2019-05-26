@@ -6,6 +6,6 @@
   "type": "ionic-angular",
   "proxies": [{
     "path": "/v1",
-    "proxyUrl": "http://localhost:3000/api/"
+    "proxyUrl": "http://ander-reis-nofood-com-br.umbler.net/api/"
   }]
 }

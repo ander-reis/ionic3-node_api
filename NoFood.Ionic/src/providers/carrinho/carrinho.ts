@@ -100,10 +100,11 @@ export class CarrinhoProvider {
 
         _pedido.itens = JSON.stringify(_pedido.itens);
 
-        return this.http.post(`${ConfigHelper.Url}/pedido`, _pedido);
+        return this.http.post(`${ConfigHelper.Url}pedido`, _pedido);
     }
 
     public getMeusPedidos(): Promise<HttpResultModel> {
-        return this.http.get(`${ConfigHelper.Url}/pedido`);
+        console.log(`${ConfigHelper.Url}pedido`);
+        return this.http.get(`${ConfigHelper.Url}pedido`);
     }
 }
