@@ -17,7 +17,7 @@ import {CategoriaProvider} from '../providers/categoria/categoria';
 import {CameraProvider} from '../providers/camera/camera';
 import {ProdutoProvider} from '../providers/produto/produto';
 import {CarrinhoProvider} from '../providers/carrinho/carrinho';
-// import {OneSignalOriginal} from "@ionic-native/onesignal";
+import {OneSignal} from "@ionic-native/onesignal";
 
 @NgModule({
     declarations: [
@@ -44,7 +44,7 @@ import {CarrinhoProvider} from '../providers/carrinho/carrinho';
         CategoriaProvider,
         CameraProvider,
         Camera,
-        // OneSignalOriginal,
+        OneSignal,
         ProdutoProvider,
         CarrinhoProvider,
     ]
