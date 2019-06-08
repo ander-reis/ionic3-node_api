@@ -4,7 +4,6 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {UsuarioProvider} from "../providers/usuario/usuario";
 import {OneSignal} from "@ionic-native/onesignal";
-import {ConfigHelper} from "./helpers/configHelper";
 
 @Component({
     templateUrl: 'app.html'
